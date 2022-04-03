@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+spec:
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web
+        image: jp0user0docker/rotten-potatoes:v2
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
+        env:
+          - name: MONGODB_DB
+            value: admin
+          - name: MONGODB_HOST
+            value: mongo-svc
+          - name: MONGODB_PORT
+            value: "27017"
+          - name: MONGODB_USERNAME
+            value: mongouser
+          - name: MONGODB_PASSWORD
+            value: mongopwd
