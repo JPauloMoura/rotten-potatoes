@@ -46,10 +46,7 @@ jobs:
         with:
           images: jp0user0docker/rotten-potatoes:v${{ github.run_number }}
           manifests: |
-            k8s/mongo/deployment.yaml
-            k8s/mongo/service.yaml
             k8s/web/deployment.yaml
-            k8s/web/service.yaml
          
          
 
